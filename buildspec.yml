@@ -3,6 +3,7 @@ phases:
   build:
     commands:
       - npm install -g @angular/cli && npm install -g bower && npm install -g grunt-cli && bower install --allow-root && npm install --save-dev @angular/cli@latest && npm install && ng build --target=production
+      - pwd
 artifacts:
   files:
     - dist/*
