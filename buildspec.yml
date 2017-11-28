@@ -11,5 +11,5 @@ phases:
       - ls -al     
 artifacts:
   files:
-    - app/.
+    - *
 discard-paths: yes
