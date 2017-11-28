@@ -4,7 +4,7 @@ phases:
     commands:
       - npm install -g bower
       - npm install -g grunt-cli
-      - bower install
+      - bower install --allow-root
       - npm install
   build:
     commands:
