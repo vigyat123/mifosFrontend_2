@@ -2,8 +2,9 @@ version: 0.1
 phases:
   build:
     commands:
-      - npm install -g bower && npm install -g grunt-cli && bower install --allow-root && npm install -g @angular/cli && npm install --save-dev @angular/cli@latest && npm install
+      - npm install -g bower && npm install -g grunt-cli && bower install --allow-root && npm install -g @angular/cli && npm install --save-dev @angular/cli@latest
       - ls -al
+      - npm install
       - ng build --target=production
 artifacts:
   files:
