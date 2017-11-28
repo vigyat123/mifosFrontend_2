@@ -8,6 +8,9 @@ phases:
       - npm install -g @angular/cli
       - npm install --save-dev @angular/cli@latest
       - npm install
+  pre_build:
+    commands:
+      - ls -al
   build:
     commands:
       - ng build --target=production
