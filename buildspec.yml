@@ -9,6 +9,7 @@ phases:
   pre_build:
     commands:
       - ls -al
+      - sudo su
       - cd ..
       - mkdir dist
       - cp mifosFrontend/** dist
