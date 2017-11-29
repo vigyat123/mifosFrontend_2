@@ -11,6 +11,6 @@ phases:
       - ls -al     
 artifacts:
   files:
-      - ../*
+      - /.
 base-directory: mifosFrontend
 discard-paths: yes
