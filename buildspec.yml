@@ -9,15 +9,16 @@ phases:
   pre_build:
     commands:
       - ls -al
+      - cd ..
       - mkdir dist
-      - cp ./** dist
+      - cp mifosFrontend/** dist
       - cd dist
       - rm -rf appspec.yml
       - rm -rf awsscripts/install_dependencies.sh
       - rm -rf awsscripts/start_application.sh
       - rm -rf awsscripts/stop_application.sh
       - rm -rf awsscripts/aws_codedeploy_config.sh
-      - cd ..
+      - mv dist mifosFrontend
 artifacts:
   files:
       - dist/*
