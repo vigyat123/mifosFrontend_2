@@ -8,7 +8,6 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - cd ..
       - ls -al
 artifacts:
   files:
