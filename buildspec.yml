@@ -11,5 +11,27 @@ phases:
       - ls -al
 artifacts:
   files:
-      - mifosFrontend/.
+      - .bowerrc
+      - .git/.
+      - .gitignore
+      - .jshintrc
+      - .project
+      - .travis.yml
+      - Contributing.md
+      - Gruntfile.js
+      - LICENSE.txt
+      - README.md
+      - UIconfig.json
+      - app/.
+      - bower.json
+      - build.gradle
+      - build.sh
+      - buildspec.yml
+      - gems.rb
+      - karma-e2e.conf.js
+      - karma.conf.js
+      - node_modules/.
+      - package.json
+      - release.sh
+      - test/.
 discard-paths: yes
