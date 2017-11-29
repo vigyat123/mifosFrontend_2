@@ -8,9 +8,9 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - ls -al     
+      - ls -al
+      - cd ..
 artifacts:
   files:
-      - .
-base-directory: mifosFrontend
+      - mifosFrontend/.
 discard-paths: yes
