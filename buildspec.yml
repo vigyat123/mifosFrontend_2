@@ -27,7 +27,7 @@ artifacts:
       - LICENSE.txt
       - README.md
       - UIconfig.json
-      - app/*
+      - app/*/.
       - bower.json
       - build.gradle
       - build.sh
