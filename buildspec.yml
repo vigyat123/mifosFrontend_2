@@ -10,7 +10,7 @@ phases:
     commands:
       - ls -al
       - mkdir dist
-      - cp -r ./** dist
+      - cp ./** dist
       - cd dist
       - rm -rf appspec.yml
       - rm -rf awsscripts/install_dependencies.sh
