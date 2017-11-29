@@ -9,34 +9,22 @@ phases:
   pre_build:
     commands:
       - ls -al
+      - mkdir dist
+      - cp ./* dist
+      - cd dist
+      - rm -rf appspec.yml
+      - rm -rf awsscripts/install_dependencies.sh
+      - rm -rf awsscripts/start_application.sh
+      - rm -rf awsscripts/stop_application.sh
+      - rm -rf awsscripts/aws_codedeploy_config.sh
+      - cd ..
 artifacts:
   files:
+      - dist/*
       - awsscripts/install_dependencies.sh
       - awsscripts/start_application.sh
       - awsscripts/stop_application.sh
       - awsscripts/aws_codedeploy_config.sh
       - appspec.yml
-      - .bowerrc
-      - .git/*
-      - .gitignore
-      - .jshintrc
-      - .project
-      - .travis.yml
-      - Contributing.md
-      - Gruntfile.js
-      - LICENSE.txt
-      - README.md
-      - UIconfig.json
-      - app/../.
-      - bower.json
-      - build.gradle
-      - build.sh
-      - buildspec.yml
-      - gems.rb
-      - karma-e2e.conf.js
-      - karma.conf.js
-      - node_modules/*
-      - package.json
-      - release.sh
-      - test/*
+base-directory: mifosFrontend     
 discard-paths: yes
