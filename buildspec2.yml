@@ -9,6 +9,8 @@ phases:
   pre_build:
     commands:
       - ls -al
+      - mkdir dist
+      - rsync -av --exclude='appspec.yml' --exclude='awsscripts/aws_codedeploy_config.sh' --exclude='awsscripts/install_dependencies.sh' --exclude='awsscripts/start_application.sh' --exclude='awsscripts/stop_application.sh' ./* dist
 artifacts:
   files:
       - '**/*'
