@@ -17,7 +17,7 @@ artifacts:
       - awsscripts/aws_codedeploy_config.sh
       - appspec.yml
       - .bowerrc
-      - .git/.
+      - .git/*
       - .gitignore
       - .jshintrc
       - .project
@@ -27,7 +27,7 @@ artifacts:
       - LICENSE.txt
       - README.md
       - UIconfig.json
-      - app/.
+      - app/*
       - bower.json
       - build.gradle
       - build.sh
@@ -35,8 +35,8 @@ artifacts:
       - gems.rb
       - karma-e2e.conf.js
       - karma.conf.js
-      - node_modules/.
+      - node_modules/*
       - package.json
       - release.sh
-      - test/.
+      - test/*
 discard-paths: yes
