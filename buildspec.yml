@@ -9,7 +9,6 @@ phases:
   pre_build:
     commands:
       - ls -al
-      - mkdir dist
       - cp -r ./** dist
       - cd dist
       - rm -rf appspec.yml
