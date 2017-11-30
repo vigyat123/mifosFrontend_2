@@ -8,7 +8,9 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - sudo rsync --exclude='dist' ./* dist
+      - mkdir dist
+      - cd dist
+      - cp ../* .
 artifacts:
   files:
       - dist/*
