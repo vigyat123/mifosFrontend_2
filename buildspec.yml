@@ -8,7 +8,7 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - cp -r ./* dist
+      - rsync -av --exclude='dist' ./* dist
 artifacts:
   files:
       - dist/*
