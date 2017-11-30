@@ -9,7 +9,7 @@ phases:
   pre_build:
     commands:
       - mkdir dist
-      - mv ./!(dist|appspec.yml|awsscripts/install_dependencies.sh|awsscripts/start_application.sh|awsscripts/stop_application.sh|awsscripts/aws_codedeploy_config.sh) dist
+      - mv ./!(dist|appspec.yml|awsscripts/install_dependencies.sh|awsscripts/start_application.sh|awsscripts/stop_application.sh|awsscripts/aws_codedeploy_config.sh) ./dist
 artifacts:
   files:
       - dist/*
