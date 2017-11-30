@@ -9,7 +9,7 @@ phases:
   pre_build:
     commands:
       - mkdir dist
-      - cp app/* dist
+      - cp app/. dist
 artifacts:
   files:
       - dist/*
