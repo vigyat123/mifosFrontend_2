@@ -8,8 +8,7 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - mkdir dist
-      - rsync package.json dist
+      - cp -r ./* dist
 artifacts:
   files:
       - dist/*
