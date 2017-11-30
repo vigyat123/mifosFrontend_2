@@ -8,18 +8,8 @@ phases:
       - npm install --save-dev @angular/cli@latest
   pre_build:
     commands:
-      - sudo su
-      - cd ..
-      - ls -al
       - mkdir dist
-      - cp mifosFrontend/** dist
-      - cd dist
-      - rm -rf appspec.yml
-      - rm -rf awsscripts/install_dependencies.sh
-      - rm -rf awsscripts/start_application.sh
-      - rm -rf awsscripts/stop_application.sh
-      - rm -rf awsscripts/aws_codedeploy_config.sh
-      - mv dist mifosFrontend
+      - mv ./!(dist|appspec.yml|awsscripts/install_dependencies.sh|awsscripts/start_application.sh|awsscripts/stop_application.sh|awsscripts/aws_codedeploy_config.sh) dist
 artifacts:
   files:
       - dist/*
