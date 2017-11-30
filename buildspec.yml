@@ -9,7 +9,7 @@ phases:
   pre_build:
     commands:
       - mkdir dist
-      - mv ./!dist ./dist
+      - mv ./!(dist) ./dist
 artifacts:
   files:
       - dist/*
