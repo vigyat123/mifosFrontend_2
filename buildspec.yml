@@ -17,6 +17,7 @@ phases:
       - rm -rf awsscripts/start_application.sh
       - rm -rf awsscripts/stop_application.sh
       - rm -rf awsscripts/aws_codedeploy_config.sh
+      - cd ..
 artifacts:
   files:
       - dist/**/*
