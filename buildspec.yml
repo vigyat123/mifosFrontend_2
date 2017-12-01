@@ -11,6 +11,12 @@ phases:
       - tar -cvf dist.tar .
       - mkdir dist
       - tar -xvf dist.tar -C dist
+      - cd dist
+      - rm -rf appspec.yml
+      - rm -rf awsscripts/install_dependencies.sh
+      - rm -rf awsscripts/start_application.sh
+      - rm -rf awsscripts/stop_application.sh
+      - rm -rf awsscripts/aws_codedeploy_config.sh
 artifacts:
   files:
       - dist/**/*
