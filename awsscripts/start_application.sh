@@ -25,4 +25,3 @@ fi
 
 # Copy the WAR file to the webapps directory
 cp -r $WAR_STAGED_LOCATION/. $CATALINA_HOME/webapps/$CONTEXT_PATH
-service tomcat7 start
