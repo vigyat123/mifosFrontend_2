@@ -53,7 +53,7 @@ http {
         # lets you doname-based virtual hosting
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
-        ssl_certificate      cert.pem;
+        ssl_certificate      tomcat.crt;
         ssl_certificate_key  /usr/share/tomcat.keystore;
         ssl_session_cache    shared:SSL:1m;
         ssl_session_timeout  5m;
