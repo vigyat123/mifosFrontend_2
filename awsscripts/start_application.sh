@@ -2,32 +2,13 @@
 
 set -e
 
-
-#DEPLOY_TO_ROOT='true'
-#CONTEXT_PATH='##CONTEXT_PATH##'
-#SERVER_HTTP_PORT='8080'
-
-#TEMP_STAGING_DIR='/tmp/codedeploy-deployment-staging-area'
-#WAR_STAGED_LOCATION="$TEMP_STAGING_DIR"
-
-# In Tomcat, ROOT.war maps to the server root
-#if [[ "$DEPLOY_TO_ROOT" = 'true' ]]; then
-#    CONTEXT_PATH='ROOT'
-#fi
 sudo su
 chmod 755 /etc/nginx/nginx.conf
 # Remove unpacked application artifacts
 if [[ -f /etc/nginx/nginx.conf ]]; then
     rm /etc/nginx/nginx.conf
 fi
-#if [[ -d $CATALINA_HOME/webapps/$CONTEXT_PATH ]]; then
-#    rm -rfv $CATALINA_HOME/webapps/$CONTEXT_PATH
-#fi
-
-# Copy the WAR file to the webapps directory
-#cp -r $WAR_STAGED_LOCATION/. $CATALINA_HOME/webapps/$CONTEXT_PATH
 cat > /etc/nginx/nginx.conf <<'EOF'
-#Vigyatttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 #user  nobody;
 #Defines which Linux system user will own and run the Nginx server
 worker_processes  1;
@@ -54,17 +35,17 @@ http {
     # If serving locally stored static files, sendfile is essential to speed up the server,
     # But if using as reverse proxy one can deactivate it
     
-    #tcp_nopush     on;
+    tcp_nopush     on;
     # works opposite to tcp_nodelay. Instead of optimizing delays, it optimizes the amount of data sent at once.
     #keepalive_timeout  0;
     keepalive_timeout  65;
     # timeout during which a keep-alive client connection will stay open.
-    #gzip  on;
+    gzip  on;
     # tells the server to use on-the-fly gzip compression.
     server {
         # You would want to make a separate file with its own server block for each virtual domain
         # on your server and then include them.
-        listen       8080;
+        listen       80;
         #tells Nginx the hostname and the TCP port where it should listen for HTTP connections.
         # listen 80; is equivalent to listen *:80;
         
@@ -72,11 +53,24 @@ http {
         # lets you doname-based virtual hosting
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
-        location / {
-            #The location setting lets you configure how nginx responds to requests for resources within the server.
-            root   /tmp/codedeploy-deployment-staging-area/app;
-            index  index.html index.htm;
-        }
+        root   /tmp/codedeploy-deployment-staging-area/;
+        index  index.html index.htm;
+        
+#        location / {
+#            root   /tmp/codedeploy-deployment-staging-area/;
+#            index  index.html index.htm;
+#        }
+        
+#        location /usr/share/tomcat7-codedeploy {
+#            proxy_pass       http://localhost:8080;
+#            proxy_set_header X-Real-IP $remote_addr;
+#            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#            proxy_set_header Host $http_host;
+#        }
+         location /usr/share/tomcat7-codedeploy {
+             try_files $uri $uri/;
+         }
+        
         #error_page  404              /404.html;
         # redirect server error pages to the static page /50x.html
         #
@@ -101,9 +95,9 @@ http {
         # deny access to .htaccess files, if Apache's document root
         # concurs with nginx's one
         #
-        #location ~ /\.ht {
-        #    deny  all;
-        #}
+        location ~ /\.ht {
+            deny  all;
+        }
     }
     # another virtual host using mix of IP-, name-, and port-based configuration
     #
