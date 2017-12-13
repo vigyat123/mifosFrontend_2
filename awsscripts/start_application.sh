@@ -54,7 +54,7 @@ http {
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
         ssl_certificate      tomcat.crt;
-        ssl_certificate_key  /usr/share/tomcat.keystore;
+        ssl_certificate_key  tomcat.keystore;
         ssl_session_cache    shared:SSL:1m;
         ssl_session_timeout  5m;
         ssl_ciphers  HIGH:!aNULL:!MD5;
