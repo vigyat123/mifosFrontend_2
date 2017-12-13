@@ -45,7 +45,7 @@ http {
     server {
         # You would want to make a separate file with its own server block for each virtual domain
         # on your server and then include them.
-        listen       80;
+        listen       443;
         #tells Nginx the hostname and the TCP port where it should listen for HTTP connections.
         # listen 80; is equivalent to listen *:80;
         
@@ -53,6 +53,12 @@ http {
         # lets you doname-based virtual hosting
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
+        ssl_certificate      cert.pem;
+        ssl_certificate_key  /usr/share/tomcat.keystore;
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
         root   /tmp/codedeploy-deployment-staging-area/;
         index  index.html index.htm;
         
