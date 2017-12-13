@@ -6,18 +6,11 @@ phases:
       - npm install -g grunt-cli
       - bower install --allow-root
       - npm install --save-dev @angular/cli@latest
-      - npm install -g rubygems
-      - gem sources -a http://rubygems.org
-      - gem install bundler
-      - bundle install
   pre_build:
     commands:
       - tar -cvf dist.tar .
       - mkdir dist
       - tar -xvf dist.tar -C dist
-      - ls -al
-      - grunt prod
-      - ls -al
 artifacts:
   files:
       - dist/**/*
