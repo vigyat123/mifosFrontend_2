@@ -74,15 +74,15 @@ http {
 #        }
 #        location /usr/share/tomcat7-codedeploy {
 #            try_files $uri $uri/;
-         }
+#        }
         
         #error_page  404              /404.html;
         # redirect server error pages to the static page /50x.html
         #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+#       error_page   500 502 503 504  /50x.html;
+#       location = /50x.html {
+#           root   html;
+#       }
         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #
         #location ~ \.php$ {
@@ -100,9 +100,9 @@ http {
         # deny access to .htaccess files, if Apache's document root
         # concurs with nginx's one
         #
-        location ~ /\.ht {
-            deny  all;
-        }
+#       location ~ /\.ht {
+#           deny  all;
+#       }
     }
     # another virtual host using mix of IP-, name-, and port-based configuration
     #
@@ -131,7 +131,10 @@ http {
         ssl_prefer_server_ciphers  on;
         location /usr/share/tomcat7-codedeploy {
              try_files $uri $uri/;
-         }
+        }
+        location = /50x.html {
+            root   html;
+        }
     }
 }
 EOF
