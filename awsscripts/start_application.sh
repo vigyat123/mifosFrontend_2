@@ -45,20 +45,19 @@ http {
     server {
         # You would want to make a separate file with its own server block for each virtual domain
         # on your server and then include them.
-        listen       443;
+#       listen       443;
         #tells Nginx the hostname and the TCP port where it should listen for HTTP connections.
         # listen 80; is equivalent to listen *:80;
         
-        server_name  _;
+#       server_name  _;
         # lets you doname-based virtual hosting
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
-        ssl_certificate      nginx-selfsigned.crt;
-        ssl_certificate_key  nginx-selfsigned.key;
-        ssl_session_cache    shared:SSL:1m;
-        ssl_session_timeout  5m;
-        ssl_ciphers  HIGH:!aNULL:!MD5;
-        ssl_prefer_server_ciphers  on;
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name _;
+        return 302 https://$server_name$request_uri;
+        
         root   /tmp/codedeploy-deployment-staging-area/;
         index  index.html index.htm;
         
@@ -118,20 +117,22 @@ http {
     #}
     # HTTPS server
     #
-    #server {
-    #    listen       443 ssl;
-    #    server_name  localhost;
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-    #    ssl_session_cache    shared:SSL:1m;
-    #    ssl_session_timeout  5m;
-    #    ssl_ciphers  HIGH:!aNULL:!MD5;
-    #    ssl_prefer_server_ciphers  on;
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
+    server {
+        listen       443 ssl;
+        server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
+        root   /tmp/codedeploy-deployment-staging-area/;
+        index  index.html index.htm;
+        ssl_certificate      nginx-selfsigned.crt;
+        ssl_certificate_key  nginx-selfsigned.key;
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+        location /usr/share/tomcat7-codedeploy {
+             try_files $uri $uri/;
+         }
+    }
 }
 EOF
 service nginx start
+
