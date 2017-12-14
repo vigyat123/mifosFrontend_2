@@ -118,7 +118,8 @@ http {
     # HTTPS server
     #
     server {
-        listen       443 ssl;
+        listen 443 ssl http2 default_server;
+        listen [::]:443 ssl http2 default_server;
         server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
         root   /tmp/codedeploy-deployment-staging-area/;
         index  index.html index.htm;
@@ -135,4 +136,3 @@ http {
 }
 EOF
 service nginx start
-
