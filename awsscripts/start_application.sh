@@ -55,11 +55,11 @@ http {
         #access_log  logs/host.access.log  main;
         listen 80 default_server;
         listen [::]:80 default_server;
-        server_name _;
+        server_name ec2-54-89-207-212.compute-1.amazonaws.com;
         return 302 https://$server_name$request_uri;
         
-        root   /tmp/codedeploy-deployment-staging-area/;
-        index  index.html index.htm;
+#       root   /tmp/codedeploy-deployment-staging-area/;
+#       index  index.html index.htm;
         
 #        location / {
 #            root   /tmp/codedeploy-deployment-staging-area/;
@@ -72,8 +72,8 @@ http {
 #            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 #            proxy_set_header Host $http_host;
 #        }
-         location /usr/share/tomcat7-codedeploy {
-             try_files $uri $uri/;
+#        location /usr/share/tomcat7-codedeploy {
+#            try_files $uri $uri/;
          }
         
         #error_page  404              /404.html;
