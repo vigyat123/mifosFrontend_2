@@ -118,8 +118,8 @@ http {
     # HTTPS server
     #
     server {
-        listen 443;
-        listen [::]:443;
+        listen 443 ssl;
+        listen [::]:443 ssl;
         server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
         root   /tmp/codedeploy-deployment-staging-area/;
 	index  index.html index.htm;
@@ -130,8 +130,7 @@ http {
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
         location / {
-	    try_files $uri $uri/app/ ../index.html;
-        }
+	}
         location = /50x.html {
             root   html;
         }
