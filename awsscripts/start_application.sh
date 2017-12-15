@@ -9,6 +9,7 @@ if [[ -f /etc/nginx/nginx.conf ]]; then
     rm /etc/nginx/nginx.conf
 fi
 cat > /etc/nginx/nginx.conf <<'EOF'
+# Vigyattttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 #user  nobody;
 #Defines which Linux system user will own and run the Nginx server
 worker_processes  1;
@@ -118,8 +119,8 @@ http {
     # HTTPS server
     #
     server {
-        listen 443 ssl;
-        listen [::]:443 ssl;
+        listen       443 ssl;
+#       listen [::]:443 ssl;
         server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
         root   /tmp/codedeploy-deployment-staging-area/;
 	index  index.html index.htm;
@@ -129,8 +130,6 @@ http {
         ssl_session_timeout  5m;
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
-        location / {
-	}
         location = /50x.html {
             root   html;
         }
