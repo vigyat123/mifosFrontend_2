@@ -130,7 +130,7 @@ http {
         ssl_prefer_server_ciphers  on;
         location / {
 		# try_files $uri /src/$uri /src/index.html;
-		try_files $uri /$uri /index.html;
+		try_files $uri $uri/ /index.html;
         }
         location = /50x.html {
             root   html;
