@@ -9,7 +9,6 @@ if [[ -f /etc/nginx/nginx.conf ]]; then
     rm /etc/nginx/nginx.conf
 fi
 cat > /etc/nginx/nginx.conf <<'EOF'
-# Vigyattttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 #user  nobody;
 #Defines which Linux system user will own and run the Nginx server
 worker_processes  1;
@@ -119,17 +118,20 @@ http {
     # HTTPS server
     #
     server {
-        listen       443 ssl;
-#       listen [::]:443 ssl;
+        listen 443 ssl http2 default_server;
+        listen [::]:443 ssl http2 default_server;
         server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
         root   /tmp/codedeploy-deployment-staging-area/;
-	index  index.html index.htm;
+        index  index.html index.htm;
         ssl_certificate      nginx-selfsigned.crt;
         ssl_certificate_key  nginx-selfsigned.key;
         ssl_session_cache    shared:SSL:1m;
         ssl_session_timeout  5m;
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
+        location /usr/share/tomcat7-codedeploy/webapps {
+             try_files $uri $uri/;
+        }
         location = /50x.html {
             root   html;
         }
