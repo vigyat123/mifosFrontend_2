@@ -131,9 +131,7 @@ http {
         location / {
 		# try_files $uri /src/$uri /src/index.html;
 		try_files $uri /$uri /index.html;
-        	expires -1;
-		add_header Cache-Control private;
-	}
+        }
         location = /50x.html {
             root   html;
         }
