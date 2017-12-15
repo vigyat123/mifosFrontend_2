@@ -122,6 +122,7 @@ http {
         listen [::]:443 ssl http2 default_server;
         server_name  ec2-54-89-207-212.compute-1.amazonaws.com;
         root   /tmp/codedeploy-deployment-staging-area/;
+	index  index.html index.htm;
         ssl_certificate      nginx-selfsigned.crt;
         ssl_certificate_key  nginx-selfsigned.key;
         ssl_session_cache    shared:SSL:1m;
@@ -129,8 +130,7 @@ http {
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
         location / {
-		# try_files $uri /src/$uri /src/index.html;
-		try_files $uri $uri/ /index.html;
+	    try_files $uri $uri/ ../index.html;
         }
         location = /50x.html {
             root   html;
